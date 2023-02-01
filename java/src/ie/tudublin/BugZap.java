@@ -27,7 +27,7 @@ public class BugZap extends PApplet
 	}
 	float playerX, playerY, playerWidth;
 	float bugX, bugY, bugHeight;
-	int score;
+	int score = 0;
 
 	public void drawPlayer(float x, float y, float w)
 	{
@@ -45,15 +45,25 @@ public class BugZap extends PApplet
 		
 		
 	}	
+
+	public void showScore()
+	{
+		textSize(20);
+		text("Score: ", 5, 20);
+		text(score, 65, 20);
+	}
 	
 	public void draw()
 	{	
 		background(0);
+		showScore();
+		
 		if((frameCount % 60) == 0)
 		{
 			bugX = random(0,500);
 			bugY += 10;
 		}
+		
 		drawPlayer(playerX, playerY, playerWidth);
 		drawBug(bugX, bugY, bugHeight);
 	}
