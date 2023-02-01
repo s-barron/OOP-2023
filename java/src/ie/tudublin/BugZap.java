@@ -27,7 +27,7 @@ public class BugZap extends PApplet
 	}
 	float playerX, playerY, playerWidth;
 	float bugX, bugY, bugHeight;
-	int score = 0;
+	int score = 0, gameMode = 0;
 
 	public void drawPlayer(float x, float y, float w)
 	{
@@ -52,37 +52,6 @@ public class BugZap extends PApplet
 		text("Score: ", 5, 20);
 		text(score, 65, 20);
 	}
-	
-	public void draw()
-	{	
-		background(0);
-
-		switch(score)
-		{
-			case 0:
-			{
-				textSize(40);
-				text("Press space to start", 100, 200);
-				break;
-			}
-			default:
-			{
-				showScore();
-			
-				if((frameCount % 60) == 0)
-				{
-					bugX = random(0,500);
-					bugY += 10;
-				}
-
-				drawPlayer(playerX, playerY, playerWidth);
-				drawBug(bugX, bugY, bugHeight);
-			}
-
-		}//end switch
-		
-	}
-
 	public void keyPressed()
 	{
 		if (keyCode == LEFT)
@@ -121,5 +90,38 @@ public class BugZap extends PApplet
 		}
 
 	}
+	
+	public void draw()
+	{	
+		background(0);
+
+		switch(gameMode)
+		{
+			case 0:
+			{
+				showScore();
+			
+				if((frameCount % 60) == 0)
+				{
+					bugX = random(0,500);
+					bugY += 10;
+				}
+
+				drawPlayer(playerX, playerY, playerWidth);
+				drawBug(bugX, bugY, bugHeight);			
+			}
+			default:
+			{
+				textSize(40);
+				text("Press space to start", 100, 200);
+				break;
+				
+			}
+
+		}//end switch
+		
+	}
+
+
 		
 }
