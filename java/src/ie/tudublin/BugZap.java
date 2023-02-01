@@ -63,7 +63,7 @@ public class BugZap extends PApplet
 			bugX = random(0,500);
 			bugY += 10;
 		}
-		
+
 		drawPlayer(playerX, playerY, playerWidth);
 		drawBug(bugX, bugY, bugHeight);
 	}
@@ -75,7 +75,7 @@ public class BugZap extends PApplet
 			System.out.println("Left arrow pressed");
 			if(playerX > 0)
 			{
-				playerX--;
+				playerX -= 5;
 			}
 			else
 			{
@@ -87,7 +87,7 @@ public class BugZap extends PApplet
 			System.out.println("Right arrow pressed");
 			if(playerX < width)
 			{
-				playerX++;
+				playerX += 5;
 			}
 			else
 			{
