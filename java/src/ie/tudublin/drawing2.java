@@ -23,7 +23,7 @@ public class HelloProcessing extends PApplet
 		line(10,10,100,100); //(x1,y1,x2,y2)
 		circle(300,250,70);  //(cx, cy, di)
 		fill(0,255,0);
-		rect(10,300,20,100); //(tlx, tly, width, height)
+		rect(10,300,20,100); //(topleftx, tly, width, height)
 		stroke(127);
 		fill(255,0,255);
 		noStroke();

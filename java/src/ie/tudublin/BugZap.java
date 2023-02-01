@@ -14,19 +14,45 @@ public class BugZap extends PApplet
 		colorMode(HSB);
 		background(0);
 
-		float playerX = width/2, playerY = height-50, playerWidth = 50;
+		playerX = width/2;
+		playerY = height-25;
+		playerWidth = 25;
 
 		smooth();
 		
 	}
+	float playerX, playerY, playerWidth;
 
-	void 
-	
+	public void drawPlayer(float x, float y, float w)
+	{
+		strokeWeight(2);
+		stroke(255);
+		float h = w/2;
+		rect(x,y,w,h);
+		
+	}	
 	
 	public void draw()
 	{	
-		strokeWeight(2);
 
+		drawPlayer(playerX, playerY, playerWidth);
+
+	}
+
+	public void keyPressed()
+	{
+		if (keyCode == LEFT)
+		{
+			System.out.println("Left arrow pressed");
+		}
+		if (keyCode == RIGHT)
+		{
+			System.out.println("Right arrow pressed");
+		}
+		if (key == ' ')
+		{
+			System.out.println("SPACE key pressed");
+		}
 	}
 		
 }
