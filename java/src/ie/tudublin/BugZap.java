@@ -56,16 +56,31 @@ public class BugZap extends PApplet
 	public void draw()
 	{	
 		background(0);
-		showScore();
-		
-		if((frameCount % 60) == 0)
-		{
-			bugX = random(0,500);
-			bugY += 10;
-		}
 
-		drawPlayer(playerX, playerY, playerWidth);
-		drawBug(bugX, bugY, bugHeight);
+		switch(score)
+		{
+			case 0:
+			{
+				textSize(40);
+				text("Press space to start", 100, 200);
+				break;
+			}
+			default:
+			{
+				showScore();
+			
+				if((frameCount % 60) == 0)
+				{
+					bugX = random(0,500);
+					bugY += 10;
+				}
+
+				drawPlayer(playerX, playerY, playerWidth);
+				drawBug(bugX, bugY, bugHeight);
+			}
+
+		}//end switch
+		
 	}
 
 	public void keyPressed()
