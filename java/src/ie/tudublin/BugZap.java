@@ -27,6 +27,7 @@ public class BugZap extends PApplet
 	}
 	float playerX, playerY, playerWidth;
 	float bugX, bugY, bugHeight;
+	int score;
 
 	public void drawPlayer(float x, float y, float w)
 	{
@@ -48,9 +49,13 @@ public class BugZap extends PApplet
 	public void draw()
 	{	
 		background(0);
+		if((frameCount % 60) == 0)
+		{
+			bugX = random(0,500);
+			bugY += 10;
+		}
 		drawPlayer(playerX, playerY, playerWidth);
 		drawBug(bugX, bugY, bugHeight);
-
 	}
 
 	public void keyPressed()
@@ -83,7 +88,13 @@ public class BugZap extends PApplet
 		{
 			System.out.println("SPACE key pressed");
 			line(playerX+playerWidth/2,playerY, playerX+playerWidth/2, 0);
+			float zapper = playerX+playerWidth/2;
+			if(zapper > bugX-(bugHeight/2) && zapper < bugX+(bugHeight/2))
+			{
+				score++;
+			}
 		}
+
 	}
 		
 }
