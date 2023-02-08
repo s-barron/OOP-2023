@@ -24,12 +24,17 @@ public class Loops extends PApplet {
 
 	public void draw() {
 		noStroke();
-		background(0);
+		background(0,0,100);
 		//fill(255);
 		for(int i = 0; i < 10; i++)
 		{
 			fill((i*25),100,100);
-			ellipse(width/20 + (i*width/10), height/10, width/10, height/10);		
+			for(int j = 0; j < 10; j++)
+			{
+				fill((i*13 + j*13), 100, 100);
+				ellipse(width/20 + (i*width/10), height/20 +(j*height/10), width/10, height/10);
+			}
+					
 		}
 	}
 
