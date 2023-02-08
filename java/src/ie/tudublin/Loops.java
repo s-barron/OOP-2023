@@ -10,6 +10,7 @@ public class Loops extends PApplet {
 	}
 
 	public void setup() {
+		colorMode(HSB, 360, 100, 100);
 	}
 
 
@@ -22,7 +23,28 @@ public class Loops extends PApplet {
 
 	public void draw() {
 		background(0);
-		fill(255);
+		//fill(255);
+		fill(180,100,100);
+		switch(mode)
+		{
+			case 0:
+			{
+				if(mouseX > width/4 && mouseX < width/2)
+				{					
+					rect(width/4,0, width/4, height);
+				}
+				else if(mouseX > width/2 && mouseX < width*0.75)
+				{
+					rect(width/2,0, width/4, height);
+				}
+			}
+			case 1:
+			{
+				
+			}
+
+
+		}
 		
 		
 		
