@@ -28,8 +28,8 @@ public class Loops extends PApplet {
 		//fill(255);
 		for(int i = 0; i < 10; i++)
 		{
-			fill(color + (i*25),100,100);
-			rect(i*(width/10), 0, width/10, height);
+			fill(color + (i*35),100,100);
+			rect(i*(width/10), i*(height/10), width/10, height/10);
 		}
 	}
 
