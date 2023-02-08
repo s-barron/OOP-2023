@@ -1,4 +1,3 @@
-// circles
 package ie.tudublin;
 
 import processing.core.PApplet;
@@ -29,8 +28,8 @@ public class Loops extends PApplet {
 		//fill(255);
 		for(int i = 0; i < 10; i++)
 		{
-			fill(275 - (i*25),100,100);
-			ellipse(width/2, height/2, width - (i*(width/10)), height-(i*(height/10)));			
+			fill((i*25),100,100);
+			ellipse(width/20 + (i*width/10), height/10, width/10, height/10);		
 		}
 	}
 
