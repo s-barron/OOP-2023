@@ -66,6 +66,7 @@ public class Loops extends PApplet {
 				if(mouseX > 375 && mouseX < 375+width/4 && mouseY > 400 && mouseY < 400+height/8)
 				{
 					fill(0,100,100);
+					rect(375, 400, width/4, height/8);
 				}
 			}
 
