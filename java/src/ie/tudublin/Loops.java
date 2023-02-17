@@ -22,20 +22,23 @@ public class Loops extends PApplet {
 		println(mode);
 	}
 
+
+
 	public void draw() {
-		noStroke();
+
 		background(0,0,100);
-		//fill(255);
-		for(int i = 0; i < 10; i++)
+
+		for(int i = 0; i < 5; i++)
 		{
-			fill((i*25),100,100);
-			for(int j = 0; j < 10; j++)
-			{
-				fill((i*13 + j*13), 100, 100);
-				ellipse(width/20 + (i*width/10), height/20 +(j*height/10), width/10, height/10);
-			}
-					
+			int x1 = 250;
+			int y1 = 250;
+			double x2 = x1 + 100 * (Math.cos((i+1)*108));
+			double y2 = y1 + 100 * (Math.sin((i+1)*108));
+
+			line(x1,y1,(float)x2,(float)y2);
 		}
+
+		
 	}
 
 }
