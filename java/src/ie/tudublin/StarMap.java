@@ -1,17 +1,8 @@
 package ie.tudublin;
-<<<<<<< HEAD
 import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
 import java.util.ArrayList; 
-=======
-
-import java.util.ArrayList;
-
-import processing.core.PApplet;
-import processing.data.Table;
-import processing.data.TableRow;
->>>>>>> 043d21d1b70f553886277dd4997a9e0376844936
 
 public class StarMap extends PApplet
 {
@@ -32,35 +23,6 @@ public class StarMap extends PApplet
 		printStars();
 	}
 
-<<<<<<< HEAD
-=======
-	void printStars()
-	{
-		for(int i = 0 ; i < stars.size() ; i ++)
-		{
-			println(stars.get(i));
-		}
-	}
-
-	void displayStars()
-	{
-		for(int i = 0 ; i < stars.size() ; i ++)
-		{
-			stars.get(i).render(this);
-		}
-	}
-
-	public void loadStars()
-	{
-		Table table = loadTable("HabHYG15ly.csv", "header");
- 		for(TableRow r:table.rows())
- 		{
- 			Star s = new Star(r);
- 			stars.add(s);
- 		}
-	}
-
->>>>>>> 043d21d1b70f553886277dd4997a9e0376844936
 	public void drawGrid()
 	{
 		stroke(0, 255, 255);
@@ -82,7 +44,6 @@ public class StarMap extends PApplet
 		
 	}
 
-<<<<<<< HEAD
 	public void loadStars()
  	{
  		Table table = loadTable("HabHYG15ly.csv", "header");
@@ -116,17 +77,6 @@ public class StarMap extends PApplet
 				tr.getFloat("AbsMag")
 			);
 		}
-=======
-	float map1(float a, float b, float c, float d, float e)
-	{
-		float r1 = c -b;
-		float r2 = e - d;
-
-		float howFar = a - b;
-
-		return d + ((howFar / r1) * r2);
-	}
->>>>>>> 043d21d1b70f553886277dd4997a9e0376844936
 		
 		public Star(boolean hab, String displayName, float distance, float xG, float yG, float zG, float absMag) {
 			this.hab = hab;
