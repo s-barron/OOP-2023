@@ -124,9 +124,15 @@ public class Audio1 extends PApplet
                 float lerpedR = 0;
                 lerpedR = lerp(lerpedR, r, 0.1f); //every frame it goes 10% closer to r instead of immediately, so it looks smoother
                 circle(width/2,height/2,lerpedR*100);
-    
                 break;
             case 4:
+                background(0);
+                noFill();
+                float side = average*200;
+                float lerpedS = 0;
+                lerpedS = lerp(lerpedS, side, 0.1f); //every frame it goes 10% closer to r instead of immediately, so it looks smoother
+                rectMode(CENTER);
+                rect(width/2,height/2,lerpedS*100,lerpedS*100);
                 break;
             case 5:
                 break;
