@@ -118,6 +118,13 @@ public class Audio1 extends PApplet
                 }
                 break;
             case 3:
+                background(0);
+                noFill();
+                float r = average*200;
+                float lerpedR = 0;
+                lerpedR = lerp(lerpedR, r, 0.1f); //every frame it goes 10% closer to r instead of immediately, so it looks smoother
+                circle(width/2,height/2,lerpedR*100);
+    
                 break;
             case 4:
                 break;
