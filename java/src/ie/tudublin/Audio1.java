@@ -5,6 +5,7 @@ import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
 import processing.core.PApplet;
+import java.lang.Math;
 
 public class Audio1 extends PApplet
 {
@@ -109,40 +110,40 @@ public class Audio1 extends PApplet
                     //float c = map(ab.get(i), -1, 1, 0, 255);
                     float c = map(i, 0, ab.size(), 0, 255);
                     stroke(c, 255, 255);
-                    float f = ab.get(i) * halfH;
-                    line(i,f,i,-f);
-                    line(i,height, i, height-f);
-                    line(0,i,f,i);
-                    line(width, i, width-f, i);
-                    //line(i,-f,i,f);
+                    float f = ab.get(i) * height;
+                    line(i,f,i,-f); //top
+                    line(i,height, i, height-f); //bottom
+                    line(0,i,f,i); //left
+                    line(width, i, width-f, i); //right
                 }
                 break;
             case 3:
                 background(0);
                 noFill();
-                float r = average*200;
-                float lerpedR = 0;
-                lerpedR = lerp(lerpedR, r, 0.1f); //every frame it goes 10% closer to r instead of immediately, so it looks smoother
-                circle(width/2,height/2,lerpedR*100);
+                circle(cx,cy,smoothedAmplitude*1000);
                 break;
             case 4:
                 background(0);
                 noFill();
-                float side = average*200;
-                float lerpedS = 0;
-                lerpedS = lerp(lerpedS, side, 0.1f); //every frame it goes 10% closer to r instead of immediately, so it looks smoother
                 rectMode(CENTER);
-                rect(width/2,height/2,lerpedS*100,lerpedS*100);
+                rect(cx,cy,smoothedAmplitude*1000,smoothedAmplitude*1000);
                 break;
             case 5:
-                break;
-
-            
+                background(0);
+                for(int i = 0; i < 360; i++)
+                {
+                    float c = map(ab.get(i), -1, 1, 0, 255);
+                    stroke(c, 255, 255);
+                    float f = ab.get(i) * halfH;
+                    double x2 = cx + (Math.cos(i)*(Math.PI/180)*100 * f);
+                    double y2 = cy + (Math.sin(i)*(Math.PI/180)*100 * f);
+                    line(cx,cy, (float)x2, (float)y2);
+                }
+                
+                break;         
 
         }
         
-
-
         
         // Other examples we made in the class
         /*
