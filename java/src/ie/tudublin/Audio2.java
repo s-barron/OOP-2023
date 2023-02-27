@@ -4,6 +4,7 @@ import ddf.minim.AudioBuffer;
 import ddf.minim.AudioInput;
 import ddf.minim.AudioPlayer;
 import ddf.minim.Minim;
+import ddf.minim.analysis.FFT;
 import processing.core.PApplet;
 
 public class Audio2 extends PApplet
@@ -13,26 +14,31 @@ public class Audio2 extends PApplet
     AudioInput ai;
     AudioBuffer ab; //ddf.minim.AudioBuffer - fully qualified class name - can use if you dont import
 
+    FFT fft;
+
     
     public void settings()
     {
-        size(1024, 1024);
+        size(512, 512);
         //fullScreen(P3D, SPAN);
     }
 
     public void setup()
     {
+        colorMode(HSB);
         m = new Minim(this);
         ai = m.getLineIn(Minim.MONO, width, 44100, 16); //( ,spread across screen, sample rate, size of sample)
         ab = ai.mix;
-        colorMode(HSB);
+        lerpedBuffer = new float[width];
+        fft = new FFT(ai.bufferSize(), ai.sampleRate()); 
+        
         // Uncomment this to use the microphone
         // ai = minim.getLineIn(Minim.MONO, width, 44100, 16);
         // ab = ai.mix; 
     }
     float off = 0;
 
-    float lerpedBuffer[] = new float[1024];
+    float[] lerpedBuffer;
 
     public void draw()
     {
@@ -47,6 +53,27 @@ public class Audio2 extends PApplet
             line(i,half + f, i, half - f);
 
         }
+
+        fft.forward(ab);
+        stroke(255);
+        int highestIndex = 0;
+
+        for(int i = 0; i < fft.specSize() / 2; i++)
+        {
+            line (i, height, i, height - fft.getBand(i) * 100);
+            if(fft.getBand(i) > fft.getBand(highestIndex))
+            {
+                highestIndex = i;
+            }
+        }
+
+        float freq = fft.indexToFreq(highestIndex);
+        fill(255);
+        text("Freq: " + freq, 50, 50);
+
+
+        float y = map(freq, 1000.0f, 2500.0f, height, 0);
+        lerpedY = lerp();
         //System.out.println(map1(5,0,10,1000,2000));
 
         /*
