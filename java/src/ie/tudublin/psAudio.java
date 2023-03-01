@@ -23,19 +23,21 @@ public class psAudio extends PApplet{
 
     public void setup()
     {
+        colorMode(HSB, 360, 100, 100);
         m = new Minim(this);
         ai = m.getLineIn(Minim.MONO, width, 44100, 16);
         ab = ai.mix;
         lerpedBuffer = new float[width];
 
         fft = new FFT(width, 44100);
+
+        
     }
 
     float[] lerpedBuffer;
     public void draw()
     {
         background(0);
-        colorMode(HSB);
         stroke(255);
 
 
@@ -59,8 +61,10 @@ public class psAudio extends PApplet{
         PitchSpeller p = new PitchSpeller();
         text("Note: " + p.spell(freq), 100, 150);
 
+        float c = map(freq, 0, ab.size(), 0, 255);
         float r = map(freq, 100.0f, 2500.0f, height, 0);
         lerpedR = lerp(lerpedR, r, 0.1f);
+        fill(c,100,100);
         circle(width/4,height/2,r/5);
         circle(width-width/4,height/2, lerpedR/5);
     
