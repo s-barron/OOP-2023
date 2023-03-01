@@ -38,6 +38,7 @@ public class Main
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Audio2());
     }
+
 	
 	public static void main(String[] args)
 	{
@@ -47,8 +48,13 @@ public class Main
 		penny.setName("Penny");
 		penny.speak();
 
-		//audio1();
-		starMap();
+		//audio2();
+
+		PitchSpeller ps = new PitchSpeller();
+		System.out.println(ps.spell(330));
+		System.out.println(ps.spell(420));
+		System.out.println(ps.spell(1980));
+		//starMap();
 	}
 	
 }
