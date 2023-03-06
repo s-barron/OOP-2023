@@ -4,7 +4,8 @@ import processing.core.PApplet;
 
 public class Life extends PApplet
 {
-	LifeBoard board;
+	LifeBoard board, next;
+
 	public void settings()
 	{
 		size(500, 500);
@@ -14,8 +15,8 @@ public class Life extends PApplet
 		colorMode(RGB);
 		background(0);
 		board = new LifeBoard(100,this);
-		board.randomise();		
-		
+		board.randomise();	
+			
 	}
 
 	
@@ -25,7 +26,6 @@ public class Life extends PApplet
 		noFill();
 		stroke(255);
 		board.render();
-		
-		
+		board.applyRules();
 	}
 }
