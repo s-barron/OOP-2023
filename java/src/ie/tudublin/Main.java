@@ -50,6 +50,8 @@ public class Main
 		String[] a = {"MAIN"};
         processing.core.PApplet.runSketch( a, new Life());
     }
+
+	
 	
 	public static void main(String[] args)
 	{
@@ -60,7 +62,8 @@ public class Main
 		penny.speak();
 
 		//audio1();
-		starMap();
+		//starMap();
+		life();
 	}
 	
 }
