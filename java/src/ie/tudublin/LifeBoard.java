@@ -32,7 +32,7 @@ public class LifeBoard {
             {
                 if (! (i == 0) && (j == 0))
                 {
-                    if (getCell(i, j))
+                    if (getCell(row+i,col+j))
                     {
                         count ++;
                     }
@@ -55,7 +55,7 @@ public class LifeBoard {
                     {
                         next[row][col] = true;
                     }
-                    else
+                    else if(count < 2 || count > 3)
                     {
                         next[row][col] = false;
                     }
@@ -75,7 +75,7 @@ public class LifeBoard {
 
                 // < 2 > 3 dies
                 // 2-3 survices
-                // dead with 3 neighboiurs comes to life
+                // dead with 3 neighbours comes to life
             }
         }
         boolean[][] temp = board;
