@@ -78,12 +78,21 @@ public class Ship {
                 pos.y -= forward.y;
 
             }
+            if(p.key == ' ')
+            {
+                PVector inFront = PVector.add(pos, PVector.mult(forward, 20));
+                Bullet b = new Bullet(inFront.x, inFront.y, rot, p);
+
+                ((YASC)p).bullets.add(b); //compiler doesn't 
+
+                
+            }
         }
     }
 
     public void render()
     {
-        p.pushMatrix();
+        p.pushMatrix(); //draw bullet as if it was centered around (0,0) then you translate it
         p.translate(pos.x, pos.y);
         p.rotate(rot);
         p.stroke(c, 255, 255);
@@ -91,7 +100,7 @@ public class Ship {
         p.line(0, - halfSize, halfSize, + halfSize);
         p.line(halfSize, halfSize, 0, 0);
         p.line(0, 0, -halfSize, halfSize);
-        p.popMatrix();
+        p.popMatrix(); // restores it
     }
 
     
