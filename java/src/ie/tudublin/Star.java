@@ -20,11 +20,11 @@ public class Star
         this(
             tr.getInt("Hab?") == 1,
             tr.getString("Display Name"),
-            tr.getFloat("distance"),
-            tr.getFloat("xG"),
-            tr.getFloat("yG"),
-            tr.getFloat("zG"),
-            tr.getFloat("absMag")
+            tr.getFloat("Distance"),
+            tr.getFloat("Xg"),
+            tr.getFloat("Yg"),
+            tr.getFloat("Zg"),
+            tr.getFloat("AbsMag")
         );
     }
 
@@ -38,11 +38,90 @@ public class Star
         this.zG = zG;
         this.absMag = absMag;
     }
+    
+    public boolean isHab() {
+        return hab;
+    }
+
+    public void setHab(boolean hab) {
+        this.hab = hab;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public float getDistance() {
+        return distance;
+    }
+
+    public void setDistance(float distance) {
+        this.distance = distance;
+    }
+
+    public float getxG() {
+        return xG;
+    }
+
+    public void setxG(float xG) {
+        this.xG = xG;
+    }
+
+    public float getyG() {
+        return yG;
+    }
+
+    public void setyG(float yG) {
+        this.yG = yG;
+    }
+
+    public float getzG() {
+        return zG;
+    }
+
+    public void setzG(float zG) {
+        this.zG = zG;
+    }
+
+    public float getAbsMag() {
+        return absMag;
+    }
+
+    public void setAbsMag(float absMag) {
+        this.absMag = absMag;
+    }
 
     @Override
     public String toString() {
         return "Star [absMag=" + absMag + ", displayName=" + displayName + ", distance=" + distance + ", hab=" + hab
                 + ", xG=" + xG + ", yG=" + yG + ", zG=" + zG + "]";
+    }
+
+    public void render(StarMap pa)
+    {
+        float x = PApplet.map(xG, -5, 5, pa.border, pa.width - pa.border);
+        float y = PApplet.map(yG, -5, 5, pa.border, pa.width - pa.border);
+
+        pa.stroke(255, 255, 0);
+        pa.line(x, y-5, x, y+5); //vertical line in cross
+        pa.line(x-5,y,x+5,y); //horizontal line in cross
+
+        pa.stroke(255,0,0);
+        pa.noFill();
+        pa.circle(x,y,absMag);
+
+        pa.fill(255);
+        pa.textSize(16);
+        pa.textAlign(PApplet.LEFT, PApplet.CENTER);
+        pa.text(displayName, x + 20, y);
+
+
+
+
     }
 
 }
