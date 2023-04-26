@@ -11,15 +11,19 @@ import processing.data.*;
 public class StarMap extends PApplet {
     ArrayList<Star> stars = new ArrayList<Star>();
 
+    public void setup()
+    {
+        colorMode(RGB);
+        loadData();
+        printStars();
+    }
+
     public void settings()
     {
         size(800,800);
     }
 
-    public void setup()
-    {
-        loadData();
-    }
+    
     public void loadData(){
 
         Table table;
@@ -32,4 +36,34 @@ public class StarMap extends PApplet {
         }
 
     }
+
+    public void printStars()
+    {
+        for(Star s: stars)
+        {
+            System.out.println(s);
+        }
+    }
+
+    int border = 50;
+    public void drawGrid()
+    {
+        stroke(255,0,255);
+        textAlign(CENTER, CENTER);
+        for(int i = -5; i <= 5; i++)
+        {
+            float x = map(i, -5, 5, border, width - border);
+            line(x, border, x, height - border); //vertical lines
+            line(border, x, width - border, x); //horizontal
+        }
+    }
+
+    public void draw()
+    {
+        background(0);
+        drawGrid();
+
+    }
+
+
 }
