@@ -1,7 +1,5 @@
 package ie.tudublin;
 
-import com.jogamp.newt.Display;
-
 import processing.core.PApplet;
 import processing.data.TableRow;
 
