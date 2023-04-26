@@ -64,35 +64,40 @@ public class StarMap extends PApplet {
 
     }
     
-    Star first = null;
-    Star second = null;
+    int first = -1;
+    int second = -1;
 
     public void mousePressed()
     {
-        int clicked = 0;
 
         {
-            for(Star s:stars)
+            for(int i = 0; i < stars.size(); i++)
             {
+                Star s = stars.get(i);
+
                 float x = map(s.getxG(), -5, 5, border, width - border);
                 float y = map(s.getyG(), -5, 5, border, height - border);
-                if((mouseX < x+5 && mouseX < x-5) && (mouseY < y+5 && mouseY < y-5))
+
+                if(dist(mouseX, mouseY, x, y) < s.getAbsMag()/2) // size/2 to make more precise
                 {
-                    first = s;
-                    clicked = 1;
-                    mouseDragged(x,y);
+                    if (first == -1) //if haven't clicked yet
+                    {
+                        first = i; //position in star array
+                    }
+                    else if(second == -1)
+                    {
+                        second = i;
+                    }
+                    else
+                    {
+                        first = i;
+                        second = -1;
+                    }
+
                 }
             }
-        }
-
+        } 
         
-        
-    }
-
-    public void mouseDragged(float x, float y)
-    {
-        stroke(255,255,0);
-        line(x,y,mouseX,mouseY);
     }
 
     public void drawStars()
@@ -109,10 +114,35 @@ public class StarMap extends PApplet {
         drawGrid();
         drawStars();
 
+        if (first != -1 && second == -1)
+        {
+            Star s1 = stars.get(first);
+            float x = map(s1.getxG(), -5, 5, border, width - border);
+            float y = map(s1.getyG(), -5, 5, border, height - border);
+            stroke(255, 255, 0);
+            line(x, y, mouseX, mouseY);
+        }
+        else if (first != -1 && second != -1)
+        {
+            Star s1 = stars.get(first);
+            Star s2= stars.get(second);
+
+            float x1 = map(s1.getxG(), -5, 5, border, width - border);
+            float y1 = map(s1.getyG(), -5, 5, border, height - border);
+            float z1 = map(s1.getzG(), -5, 5, border, height - border);
+
+            float x2 = map(s2.getxG(), -5, 5, border, width - border);
+            float y2 = map(s2.getyG(), -5, 5, border, height - border);
+            float z2 = map(s2.getzG(), -5, 5, border, height - border);
+
+            
+            stroke(255, 255, 0);
+            line(x1, y1, x2, y2);    
+            fill(255);
+            float dist = dist(x1, y1, z1, x2, y2, z2);
+            text("Distance from " + s1.getDisplayName() + " to " + s2.getDisplayName() + " is " + dist + " parsecs", border, height - 25);
+        }
+
     }
-
-    
-
-
 
 }
